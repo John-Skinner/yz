@@ -12,7 +12,7 @@ import {tsCreateTypeQueryForCoercedInput} from "@angular/compiler-cli/src/ngtsc/
 })
 export class DiceComponent implements OnInit{
   value=-1;
-  @Input() diceDiameter = 400;
+  @Input() diceDiameter = 300;
 
   @ViewChild('diceID') myDrawCanvas:ElementRef | null = null;
   currentRoll = 1;

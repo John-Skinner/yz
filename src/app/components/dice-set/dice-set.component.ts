@@ -11,6 +11,6 @@ import {DiceComponent} from "../dice/dice.component";
   styleUrl: './dice-set.component.css'
 })
 export class DiceSetComponent {
-  diceDiameter=450;
+  diceDiameter=350;
 
 }
