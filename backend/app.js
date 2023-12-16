@@ -10,7 +10,7 @@ app.use(function(req,res,next) {
 app.use(logger('dev'));
 app.use(express.static('../dist/browser'));
 
-app.listen(4555,()=> {
+app.listen(80,()=> {
   console.log('listening now');
 })
 
