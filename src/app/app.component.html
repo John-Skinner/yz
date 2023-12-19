@@ -1,1 +1,14 @@
-<app-dice-set></app-dice-set>
+<button #showDiceID (click)="showDice()">DICE</button>
+<button #scoresID (click)="showScores()">SCORES</button>
+
+<div id="dicePanelID" #dicePanel>
+  <app-dice-set>
+
+  </app-dice-set>
+</div>
+<div id="scorePanelID" #scorePanel>
+  <app-scores>
+
+  </app-scores>
+</div>
+
