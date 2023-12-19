@@ -1,14 +1,16 @@
-<button #showDiceID (click)="showDice()">DICE</button>
-<button #scoresID (click)="showScores()">SCORES</button>
 
-<div id="dicePanelID" #dicePanel>
-  <app-dice-set>
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="Dice">
+    <app-dice-set>
 
-  </app-dice-set>
-</div>
-<div id="scorePanelID" #scorePanel>
-  <app-scores>
+    </app-dice-set>
+  </mat-tab>
+  <mat-tab label="Score">
+    <app-scores>
 
-  </app-scores>
-</div>
+    </app-scores>
+  </mat-tab>
+
+</mat-tab-group>
+
 

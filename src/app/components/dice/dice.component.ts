@@ -8,7 +8,7 @@ import {tsCreateTypeQueryForCoercedInput} from "@angular/compiler-cli/src/ngtsc/
   standalone: true,
   imports: [],
   templateUrl: './dice.component.html',
-  styleUrl: './dice.component.css'
+  styleUrl: './dice.component.scss'
 })
 export class DiceComponent implements OnInit{
   value=-1;

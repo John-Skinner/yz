@@ -8,7 +8,7 @@ import {DiceComponent} from "../dice/dice.component";
     DiceComponent
   ],
   templateUrl: './dice-set.component.html',
-  styleUrl: './dice-set.component.css'
+  styleUrl: './dice-set.component.scss'
 })
 export class DiceSetComponent {
   diceDiameter=350;
