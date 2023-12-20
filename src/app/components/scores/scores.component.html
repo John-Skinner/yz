@@ -1,7 +1,18 @@
-<table>
+<table id="upper">
+  <tr style="font-size:30px">
+    <th>Goal</th>
+    <th style="max-width:40px"><input type="text" maxlength="4"></th>
+    <th style="max-width:40px"><input type="text" maxlength="4"></th>
+    <th style="max-width:40px"><input type="text" maxlength="4"></th>
+    <th style="max-width:40px"><input type="text" maxlength="4"></th>
+
+
+  </tr>
   <tr>
     <td>
-      <canvas class="iconic" id="ones"></canvas>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
     </td>
     <td><span id="onesValueP1"></span></td>
     <td><span id="onesValueP2"></span></td>
@@ -10,7 +21,9 @@
   </tr>
   <tr>
     <td>
-      <canvas class="iconic" id="twos"></canvas>
+      <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
     </td>
     <td><span id="twosValueP1"></span></td>
     <td><span id="twosValueP2"></span></td>
@@ -19,7 +32,9 @@
   </tr>
   <tr>
     <td>
-      <canvas class="iconic" id="threes"></canvas>
+      <app-dice [fixedValue]="3" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="3" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="3" [diceDiameter]="diceDiameter"></app-dice>
     </td>
     <td><span id="threesValueP1"></span></td>
     <td><span id="threesValueP2"></span></td>
@@ -28,7 +43,9 @@
   </tr>
   <tr>
     <td>
-      <canvas class="iconic" id="fours"></canvas>
+      <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
     </td>
     <td><span id="foursValueP1"></span></td>
     <td><span id="foursValueP2"></span></td>
@@ -37,7 +54,9 @@
   </tr>
   <tr>
     <td>
-      <canvas class="iconic" id="fives"></canvas>
+      <app-dice [fixedValue]="5" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="5" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="5" [diceDiameter]="diceDiameter"></app-dice>
     </td>
     <td><span id="fivesValueP1"></span></td>
     <td><span id="fivesValueP2"></span></td>
@@ -46,7 +65,9 @@
   </tr>
   <tr>
     <td>
-      <canvas class="iconic" id="sizes"></canvas>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
     </td>
     <td><span id="sixesValueP1"></span></td>
     <td><span id="sixesValueP2"></span></td>
@@ -55,7 +76,7 @@
   </tr>
   <tr>
     <td>
-      <canvas class="iconic" id="sum"></canvas>
+      <h3>TOTAL SCORE</h3>
     </td>
     <td><span id="sumValueP1"></span></td>
     <td><span id="sumValueP2"></span></td>
@@ -64,16 +85,166 @@
   </tr>
   <tr>
     <td>
-      <canvas class="iconic" id="bonus"></canvas>
+      <h3>
+        BONUS
+      </h3>
     </td>
     <td><span id="bonusValueP1"></span></td>
     <td><span id="bonusValueP2"></span></td>
     <td><span id="bonusValueP3"></span></td>
     <td><span id="bonusValueP4"></span></td>
   </tr>
-</table>
-<table>
   <tr>
-    <td> 3 KIND</td>
+    <td>
+      <h3>
+        TOTAL UPPER
+      </h3>
+    </td>
+    <td><span id="tuValueP1"></span></td>
+    <td><span id="tuValueP2"></span></td>
+    <td><span id="tuValueP3"></span></td>
+    <td><span id="tuValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <h3> Current Throw</h3>
+    </td>
+    <td colspan="4">
+      <app-dice [fixedValue]="current(1)" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+    </td>
+  </tr>
+</table>
+
+<table id="lower">
+  <tr>
+    <th>Goal</th>
+    <th>P 1</th>
+    <th>P 2</th>
+    <th>P 3</th>
+    <th>P 4</th>
+
+  </tr>
+  <tr>
+    <td>
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+    </td>
+    <td><span id="3kValueP1"></span></td>
+    <td><span id="3kValueP2"></span></td>
+    <td><span id="3kValueP3"></span></td>
+    <td><span id="3kValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+    </td>
+    <td><span id="4kValueP1"></span></td>
+    <td><span id="4kValueP2"></span></td>
+    <td><span id="4kValueP3"></span></td>
+    <td><span id="4kValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+    </td>
+    <td><span id="fhValueP1"></span></td>
+    <td><span id="fhValueP2"></span></td>
+    <td><span id="fhValueP3"></span></td>
+    <td><span id="fhValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="3" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
+
+    </td>
+    <td><span id="ssValueP1"></span></td>
+    <td><span id="ssValueP2"></span></td>
+    <td><span id="ssValueP3"></span></td>
+    <td><span id="ssValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="3" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="5" [diceDiameter]="diceDiameter"></app-dice>
+    </td>
+    <td><span id="lsValueP1"></span></td>
+    <td><span id="lsValueP2"></span></td>
+    <td><span id="lsValueP3"></span></td>
+    <td><span id="lsValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
+    </td>
+    <td><span id="yValueP1"></span></td>
+    <td><span id="yValueP2"></span></td>
+    <td><span id="yValueP3"></span></td>
+    <td><span id="yValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      +
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      +
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      +
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      +
+      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+    </td>
+    <td><span id="ccValueP1"></span></td>
+    <td><span id="ccValueP2"></span></td>
+    <td><span id="ccValueP3"></span></td>
+    <td><span id="ccValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <h3> YAHTZEE BONUS</h3>
+    </td>
+    <td><span id="ybonusValueP1"></span></td>
+    <td><span id="ybonusValueP2"></span></td>
+    <td><span id="ybonusValueP3"></span></td>
+    <td><span id="ybonusValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <h3> TOTAL LOWER</h3>
+    </td>
+    <td><span id="tlValueP1"></span></td>
+    <td><span id="tlValueP2"></span></td>
+    <td><span id="tlValueP3"></span></td>
+    <td><span id="tlValueP4"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <h3> GRAND TOTAL</h3>
+    </td>
+    <td><span id="gtValueP1"></span></td>
+    <td><span id="gtValueP2"></span></td>
+    <td><span id="gtValueP3"></span></td>
+    <td><span id="gtValueP4"></span></td>
   </tr>
 </table>

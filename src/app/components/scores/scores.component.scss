@@ -1,0 +1,29 @@
+:host {
+  display:grid;
+  grid-template-columns: 1fr 1fr
+}
+input[type='text'] {
+  font-size: 30px;
+}
+th {
+  background-color: orange;
+  font-size:30px
+}
+  table, tr, td {
+    border: 3px solid black;
+    border-radius: 10px;
+  }
+ .firstCol {
+    width:150px;
+    color:green;
+  }
+
+#upper {
+  grid-column: 1/2;
+  grid-row:1
+};
+#lower {
+  grid-column:2/3;
+  grid-row:1
+}
+
