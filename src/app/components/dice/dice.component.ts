@@ -1,5 +1,5 @@
-import {Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit} from '@angular/core';
-import {tsCreateTypeQueryForCoercedInput} from "@angular/compiler-cli/src/ngtsc/typecheck/src/ts_util";
+import {Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit, Output} from '@angular/core';
+
 
 
 @Component({
@@ -13,9 +13,9 @@ export class DiceComponent implements OnInit, AfterViewInit {
   value = -1;
   @Input() diceDiameter = 300;
   @Input() fixedValue = 0;
-
+  @Output() selectedState = false;
+  @Output() diceValue=0;
   @ViewChild('diceID') myDrawCanvas: ElementRef | null = null;
-  currentRoll = 1;
 
   constructor() {
   }
@@ -63,18 +63,13 @@ export class DiceComponent implements OnInit, AfterViewInit {
     }
   };
 
-  roll() {
+  select() {
+    this.selectedState = !this.selectedState;
     if (this.fixedValue > 0) {
       return;
     }
-    let newValue = Math.floor(Math.random() * 6) + 1;
-    console.log(`roll:${this.currentRoll}`);
-
-
-    this.currentRoll = (this.currentRoll++) % 6 + 1;
-    this.drawFace(this.currentRoll);
-
-
+    console.log(`select${this.selectedState}`);
+    this.drawFace(this.diceValue);
   }
 
   diceRadius() {
@@ -86,13 +81,24 @@ export class DiceComponent implements OnInit, AfterViewInit {
     let cy = this.diceDiameter / 2.0;
     return [cx, cy];
   }
+  public roll() {
+    this.diceValue = Math.floor(Math.random()*6)+1;
+    this.drawFace(this.diceValue);
+  }
 
   drawDots(xyxyxy: number[]) {
     let canvas = this.myDrawCanvas?.nativeElement as HTMLCanvasElement;
     let ctxt = canvas.getContext('2d');
+    if (ctxt == null) {
+      return;
+    }
+    if (this.selectedState) {
+      ctxt.fillStyle='orange';
+    }
+    else {
+      ctxt.fillStyle='black';
+    }
     if (ctxt) {
-      let diceRadius = this.diceRadius();
-      ctxt.fillStyle = 'black';
       ctxt.fillRect(0, 0, this.diceDiameter - 1, this.diceDiameter - 1);
 
       ctxt.fillStyle = "white";
@@ -106,7 +112,6 @@ export class DiceComponent implements OnInit, AfterViewInit {
   }
 
   drawZero() {
-    let center = this.centerPoint();
     let points: number[] = [];
     this.drawDots(points);
   }
@@ -160,7 +165,6 @@ export class DiceComponent implements OnInit, AfterViewInit {
   }
 
   drawSix() {
-    let center = this.centerPoint();
     let yFourths = this.diceDiameter / 4.0;
     let yThirds = this.diceDiameter / 3.0;
 

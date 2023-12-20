@@ -1,5 +1,7 @@
-<app-dice id="d1" [diceDiameter]="diceDiameter"></app-dice>
-<app-dice id="d2" [diceDiameter]="diceDiameter"></app-dice>
-<app-dice id="d3" [diceDiameter]="diceDiameter" ></app-dice>
-<app-dice id="d4" [diceDiameter]="diceDiameter" ></app-dice>
-<app-dice id="d5" [diceDiameter]="diceDiameter" ></app-dice>
+<button id="rollSelectedID" (click)="rollSelected()">Throw</button>
+
+<app-dice #dice1 id="d1" [diceDiameter]="diceDiameter"></app-dice>
+<app-dice #dice2 id="d2" [diceDiameter]="diceDiameter"></app-dice>
+<app-dice #dice3 id="d3" [diceDiameter]="diceDiameter" ></app-dice>
+<app-dice #dice4 id="d4" [diceDiameter]="diceDiameter" ></app-dice>
+<app-dice #dice5 id="d5" [diceDiameter]="diceDiameter" ></app-dice>
