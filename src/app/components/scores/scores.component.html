@@ -1,10 +1,10 @@
 <table id="upper">
   <tr style="font-size:30px">
     <th>Goal</th>
-    <th style="max-width:40px"><input type="text" maxlength="4"></th>
-    <th style="max-width:40px"><input type="text" maxlength="4"></th>
-    <th style="max-width:40px"><input type="text" maxlength="4"></th>
-    <th style="max-width:40px"><input type="text" maxlength="4"></th>
+    <th style="max-width:40px">{{getPlayerName(0)}}</th>
+    <th style="max-width:40px">{{getPlayerName(1)}}</th>
+    <th style="max-width:40px">{{getPlayerName(2)}}</th>
+    <th style="max-width:40px">{{getPlayerName(3)}}</th>
 
 
   </tr>
@@ -14,10 +14,9 @@
       <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="onesValueP1"></span></td>
-    <td><span id="onesValueP2"></span></td>
-    <td><span id="onesValueP3"></span></td>
-    <td><span id="onesValueP4"></span></td>
+    <td></td>
+    <td><td>
+    <td></td>
   </tr>
   <tr>
     <td>
@@ -110,11 +109,11 @@
       <h3> Current Throw</h3>
     </td>
     <td colspan="4">
+      <app-dice [fixedValue]="current(0)" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="current(1)" [diceDiameter]="diceDiameter"></app-dice>
-      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
-      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
-      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
-      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="current(2)" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="current(3)" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="current(4)" [diceDiameter]="diceDiameter"></app-dice>
     </td>
   </tr>
 </table>
@@ -122,10 +121,10 @@
 <table id="lower">
   <tr>
     <th>Goal</th>
-    <th>P 1</th>
-    <th>P 2</th>
-    <th>P 3</th>
-    <th>P 4</th>
+    <th>{{getPlayerName(0)}}</th>
+    <th>{{getPlayerName(1)}}</th>
+    <th>{{getPlayerName(2)}}</th>
+    <th>{{getPlayerName(3)}}</th>
 
   </tr>
   <tr>

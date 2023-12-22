@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {DiceComponent} from "../dice/dice.component";
+import {GameService} from "../../services/game.service";
 
 
 @Component({
@@ -13,8 +14,21 @@ import {DiceComponent} from "../dice/dice.component";
 })
 export class ScoresComponent {
   diceDiameter=50;
+
+  constructor(private gameService:GameService) {
+
+  }
+
+  getPlayerName(i:number) {
+    if (i >= this.gameService.players.length) {
+      return '';
+    }
+    return this.gameService.players[i];
+
+  }
   current(dieNumber:number) {
-    return 3;
+    console.log(`new die number for ${dieNumber}  ${this.gameService.currentDice[dieNumber]}`)
+    return this.gameService.currentDice[dieNumber];
   }
 
 }

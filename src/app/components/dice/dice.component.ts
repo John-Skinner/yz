@@ -1,4 +1,15 @@
-import {Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit, Output} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  Output,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
+
 
 
 
@@ -9,8 +20,9 @@ import {Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit, Output} 
   templateUrl: './dice.component.html',
   styleUrl: './dice.component.scss'
 })
-export class DiceComponent implements OnInit, AfterViewInit {
+export class DiceComponent implements OnInit, AfterViewInit, OnChanges {
   value = -1;
+  hasCanvas=false;
   @Input() diceDiameter = 300;
   @Input() fixedValue = 0;
   @Output() selectedState = false;
@@ -21,6 +33,7 @@ export class DiceComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.hasCanvas = true;
     if (this.fixedValue > 0) {
       const value = Number(this.fixedValue);
       console.log(`drawing fixed dots for ${value}`);
@@ -185,6 +198,15 @@ export class DiceComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    for (let changesKey in changes) {
+      console.log(`change prop:${changesKey} to ${changes[changesKey].currentValue}`);
+    }
+    if (this.hasCanvas) {
+      this.drawFace(this.fixedValue);
+    }
   }
 
 }

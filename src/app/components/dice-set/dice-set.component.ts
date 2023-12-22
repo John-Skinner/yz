@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {DiceComponent} from "../dice/dice.component";
+import {GameService} from "../../services/game.service";
 
 @Component({
   selector: 'app-dice-set',
@@ -17,6 +18,8 @@ export class DiceSetComponent implements AfterViewInit {
   @ViewChild('dice3') dice3:DiceComponent | null = null;
   @ViewChild('dice4') dice4:DiceComponent | null = null;
   @ViewChild('dice5') dice5:DiceComponent | null = null;
+  constructor(private gameService:GameService) {
+  }
   diceDiameter=350;
   rollSelected() {
     console.log(`rollSelected(${this.dice.length}`);
@@ -29,6 +32,9 @@ export class DiceSetComponent implements AfterViewInit {
 
       }
     })
+    this.dice.forEach(((d,i)=> {
+      this.gameService.currentDice[i] = d.diceValue;
+    }))
 
   }
 
