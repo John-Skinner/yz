@@ -1,0 +1,16 @@
+<h2> Enter Player Initials</h2>
+<ul>
+  <li> <label for="p1">Player 1</label><input type="text" id="p1"
+                                              (focusout)="enterPlayer($event,0)"
+                                              [disabled]="disablePlayerEntry[0]"></li>
+  <li> <label for="p2">Player 2</label><input type="text" id="p2"
+                                              (focusout)="enterPlayer($event,1)"
+                                              [disabled]="disablePlayerEntry[1]"></li>
+  <li> <label for="p3">Player 3</label><input type="text" id="p3"
+                                              (focusout)="enterPlayer($event,2)"
+                                              [disabled]="disablePlayerEntry[2]"></li>
+  <li> <label for="p4">Player 4</label><input type="text" id="p4"
+                                              (focusout)="enterPlayer($event,3)"
+                                              [disabled]="disablePlayerEntry[3]"></li>
+</ul>
+<button (click)="done()">Start Game</button>
