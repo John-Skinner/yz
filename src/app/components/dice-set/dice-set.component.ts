@@ -62,7 +62,7 @@ export class DiceSetComponent implements AfterViewInit {
 
   }
   setSelectionAllowed(allow:boolean) {
-    this.dice.forEach((d,i)=> {
+    this.dice.forEach((d)=> {
       d.AllowSelect = allow;
     })
   }

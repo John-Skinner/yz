@@ -30,9 +30,7 @@ export class GameService {
   diceWasSelected = false;
   currentThrow=0;
   constructor() { }
-  applyDiceToRow(name:string) {
 
-  }
   onDiceWasSelected() {
     return this.diceWasSelectedSubject.asObservable();
   }

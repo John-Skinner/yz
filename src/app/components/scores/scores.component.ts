@@ -33,8 +33,6 @@ export class ScoresComponent {
   }
   current(dieNumber:number) {
 
-    let comp = this.gameService.players[ScoreType.ones];
-
     return this.gameService.currentDice[dieNumber];
   }
   choseRow(row:number) {
