@@ -9,13 +9,13 @@ th {
   background-color: orange;
   font-size:30px
 }
-  table, tr, td {
-    border: 3px solid black;
+ th, td {
+    border: 1px solid purple;
     border-radius: 10px;
+
   }
  .firstCol {
     width:150px;
-    color:green;
   }
 
 #upper {
@@ -25,5 +25,18 @@ th {
 #lower {
   grid-column:2/3;
   grid-row:1
+}
+button {
+  margin:3px;
+}
+.row {
+  display:flex;
+  margin-left:3px;
+  button {
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bolder;
+    background-color: lightgray;
+  }
 }
 

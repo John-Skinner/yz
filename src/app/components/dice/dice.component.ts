@@ -7,7 +7,7 @@ import {
   AfterViewInit,
   Output,
   OnChanges,
-  SimpleChanges
+  SimpleChanges, EventEmitter
 } from '@angular/core';
 
 
@@ -23,10 +23,12 @@ import {
 export class DiceComponent implements OnInit, AfterViewInit, OnChanges {
   value = -1;
   hasCanvas=false;
+  allowSelect = true;
   @Input() diceDiameter = 300;
   @Input() fixedValue = 0;
   @Output() selectedState = false;
   @Output() diceValue=0;
+  @Output() selectionChanged = new EventEmitter<boolean>();
   @ViewChild('diceID') myDrawCanvas: ElementRef | null = null;
 
   constructor() {
@@ -36,10 +38,16 @@ export class DiceComponent implements OnInit, AfterViewInit, OnChanges {
     this.hasCanvas = true;
     if (this.fixedValue > 0) {
       const value = Number(this.fixedValue);
-      console.log(`drawing fixed dots for ${value}`);
+
       this.drawFace(value);
     }
   };
+  set AllowSelect(allow:boolean) {
+    this.allowSelect = allow;
+  }
+  get AllowSelect() {
+    return this.allowSelect;
+  }
 
   numberOfRolls = 0;
 
@@ -77,12 +85,16 @@ export class DiceComponent implements OnInit, AfterViewInit, OnChanges {
   };
 
   select() {
+    if (!this.allowSelect) {
+      return;
+    }
     this.selectedState = !this.selectedState;
     if (this.fixedValue > 0) {
       return;
     }
-    console.log(`select${this.selectedState}`);
+
     this.drawFace(this.diceValue);
+    this.selectionChanged.emit(this.selectedState)
   }
 
   diceRadius() {
@@ -201,9 +213,7 @@ export class DiceComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    for (let changesKey in changes) {
-      console.log(`change prop:${changesKey} to ${changes[changesKey].currentValue}`);
-    }
+
     if (this.hasCanvas) {
       this.drawFace(this.fixedValue);
     }

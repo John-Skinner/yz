@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {GameService} from "../../services/game.service";
+import {Component} from '@angular/core';
+import {GameService, GameState} from "../../services/game.service";
 
 @Component({
   selector: 'app-setup',
@@ -14,6 +14,7 @@ export class SetupComponent {
 
   constructor(private gameService:GameService)
   {
+
   }
   enterPlayer(event:any, playerNumber:number) {
     const name=event.target.value;
@@ -37,6 +38,8 @@ export class SetupComponent {
   }
   done() {
     this.disablePlayerEntry[this.currentEnterPlayer]=true;
+    this.gameService.changeTabIndex(0);
+    this.gameService.changeGameState(GameState.start);
 
   }
 

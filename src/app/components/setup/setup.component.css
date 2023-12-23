@@ -1,3 +1,6 @@
 :host {
-  font-size: large;
+  font-size:xxx-large;
+}
+button, input {
+  font-size: xxx-large;
 }

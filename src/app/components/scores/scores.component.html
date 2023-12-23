@@ -10,9 +10,12 @@
   </tr>
   <tr>
     <td>
-      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
-      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
-      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <button (click)="choseRow(0)">
+        <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+        <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+        <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      </button>
+
     </td>
     <td></td>
     <td><td>
@@ -20,9 +23,13 @@
   </tr>
   <tr>
     <td>
-      <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
-      <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
-      <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
+      <div class="row">
+        <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
+        <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
+        <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
+        <button (click)="choseRow(1)">USE</button>
+      </div>
+
     </td>
     <td><span id="twosValueP1"></span></td>
     <td><span id="twosValueP2"></span></td>
@@ -204,15 +211,11 @@
   </tr>
   <tr>
     <td>
-      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
-      +
-      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
-      +
-      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
-      +
-      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
-      +
-      <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="current(0)" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="current(1)" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="current(2)" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="current(3)" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="current(4)" [diceDiameter]="diceDiameter"></app-dice>
     </td>
     <td><span id="ccValueP1"></span></td>
     <td><span id="ccValueP2"></span></td>

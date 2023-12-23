@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {DiceComponent} from "../dice/dice.component";
 import {GameService} from "../../services/game.service";
+import { ScoreType} from "../../services/game.service";
 
 
 @Component({
@@ -20,15 +21,24 @@ export class ScoresComponent {
   }
 
   getPlayerName(i:number) {
+    const emptyName='-----';
     if (i >= this.gameService.players.length) {
-      return '';
+      return emptyName;
+    }
+    if (this.gameService.players[i].length === 0) {
+      return emptyName;
     }
     return this.gameService.players[i];
 
   }
   current(dieNumber:number) {
-    console.log(`new die number for ${dieNumber}  ${this.gameService.currentDice[dieNumber]}`)
+
+    let comp = this.gameService.players[ScoreType.ones];
+
     return this.gameService.currentDice[dieNumber];
+  }
+  choseRow(row:number) {
+    console.log(`chose row:${row}`);
   }
 
 }

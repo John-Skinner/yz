@@ -1,7 +1,8 @@
-<button id="rollSelectedID" (click)="rollSelected()">Throw</button>
 
-<app-dice #dice1 id="d1" [diceDiameter]="diceDiameter"></app-dice>
-<app-dice #dice2 id="d2" [diceDiameter]="diceDiameter"></app-dice>
-<app-dice #dice3 id="d3" [diceDiameter]="diceDiameter" ></app-dice>
-<app-dice #dice4 id="d4" [diceDiameter]="diceDiameter" ></app-dice>
-<app-dice #dice5 id="d5" [diceDiameter]="diceDiameter" ></app-dice>
+<app-playturn (throwDice)="throwDice($event)"  id="rollSelectedID"></app-playturn>
+
+<app-dice (selectionChanged)="userThrew($event)" #dice1 id="d1" [diceDiameter]="diceDiameter"></app-dice>
+<app-dice (selectionChanged)="userThrew($event)"  #dice2 id="d2" [diceDiameter]="diceDiameter"></app-dice>
+<app-dice (selectionChanged)="userThrew($event)"  #dice3 id="d3" [diceDiameter]="diceDiameter" ></app-dice>
+<app-dice (selectionChanged)="userThrew($event)" #dice4 id="d4" [diceDiameter]="diceDiameter" ></app-dice>
+<app-dice (selectionChanged)="userThrew($event)" #dice5 id="d5" [diceDiameter]="diceDiameter" ></app-dice>
