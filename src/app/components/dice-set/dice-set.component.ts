@@ -28,7 +28,7 @@ export class DiceSetComponent implements AfterViewInit {
     });
     this.gameService.onNewTurn().subscribe((player)=> {
       this.clearDice();
-      this.setSelectionAllowed(true);
+      this.setSelectionAllowed(false);
 
     })
 

@@ -15,17 +15,17 @@ import {NgForOf} from "@angular/common";
   styleUrl: './scores.component.scss'
 })
 export class ScoresComponent {
-  diceDiameter=50;
+  diceDiameter = 50;
   selectionApplied = false;
-  chosenRow=-1;
-  ApplyMsg='Apply';
+  chosenRow = -1;
+  ApplyMsg = 'Apply';
 
-  constructor(private gameService:GameService) {
-    this.gameService.onNewTurn().subscribe((player)=> {
+  constructor(private gameService: GameService) {
+    this.gameService.onNewTurn().subscribe((player) => {
       this.chosenRow = -1;
 
     })
-    this.gameService.onGameStateChanged().subscribe((state)=> {
+    this.gameService.onGameStateChanged().subscribe((state) => {
       if (state === GameState.scoreReady) {
         this.selectionApplied = false;
         this.ApplyMsg = 'Apply';
@@ -34,8 +34,8 @@ export class ScoresComponent {
 
   }
 
-  getPlayerName(i:number) {
-    const emptyName='-----';
+  getPlayerName(i: number) {
+    const emptyName = '-----';
     if (i >= this.gameService.players.length) {
       return emptyName;
     }
@@ -45,62 +45,100 @@ export class ScoresComponent {
     return this.gameService.players[i];
 
   }
-  current(dieNumber:number) {
+
+  current(dieNumber: number) {
 
     return this.gameService.currentDice[dieNumber];
   }
-  choseRow(row:number) {
+
+  choseRow(row: number) {
     console.log(`chose row:${row}`);
-    this.chosenRow=row;
+    this.chosenRow = row;
   }
-  getFinalScoreString(row:number,otherPlayer:number) {
-    let value = this.gameService.getScoreValue(row,otherPlayer);
-    if ((otherPlayer === 1) && (value > 0)) {
-      console.error(`************* yikes score on ${otherPlayer} = ${value}`);
-    }
+
+  getFinalScoreString(row: number, otherPlayer: number) {
+    let value = this.gameService.getScoreValue(row, otherPlayer);
     if (value === -1) {
-      return "(0)";
+      return "0";
     }
-    return "(" + value.toString() + ")";
+    if (value > 0) {
+      return value.toString();
+    }
+    return '';
   }
-  isChoiceAlreadyTaken(row:number) {
-    let value = this.gameService.getScoreValue(row,this.gameService.currentPlayer);
+
+  isChoiceAlreadyTaken(row: number) {
+    let value = this.gameService.getScoreValue(row, this.gameService.currentPlayer);
     return (value === -1) || (value > 0);
   }
-  getOptionScoreString(row:number,player:number) {
-    let value = this.gameService.getScoreValue(row,player);
+
+  getOptionScoreString(row: number, player: number) {
+    let value = this.gameService.getScoreValue(row, player);
     if (value === -1) {
-      return "(0)"
+      return "0"
     }
     if (value === 0) {
-      value=this.gameService.getOptionValue(row);
+      value = this.gameService.getOptionValue(row);
       return value.toString();
     }
 
-    return  '(' + value.toString() + ')';
+    return value.toString();
   }
 
-  entry(row:number,player:number) {
+  editable(row: number, player: number) {
     let value = -1;
-    let originalValue=-1;
+    let originalValue = -1;
     let valueString = '';
     let testValue = this.gameService.getOptionValue(row);
-    if (testValue !== undefined) {
-      if (player < this.gameService.players.length) {
-
-        if ((player !== this.gameService.currentPlayer) || (this.selectionApplied)) {
-
-          valueString = this.getFinalScoreString(row, player);
-        } else {
-
-          valueString = this.getOptionScoreString(row, player);
-        }
-        return valueString;
-      }
+    if (testValue === undefined) {
+      return '';
     }
-    return "";
+    if (player >= this.gameService.players.length) {
+      return '';
+    }
+
+    if ((player !== this.gameService.currentPlayer) || (this.selectionApplied)) {
+
+      return 'fixed';
+    }
+    let currentFinalValue = this.gameService.getScoreValue(row, player);
+
+    if ((currentFinalValue === -1) || (currentFinalValue > 0)) {
+
+      return 'fixed';
+    }
+
+    console.log(`returning editable`);
+    return 'editable';
+
 
   }
+
+  entry(row: number, player: number) {
+    let value = -1;
+    let originalValue = -1;
+    let valueString = '';
+    let testValue = this.gameService.getOptionValue(row);
+    if (testValue === undefined) {
+      return '';
+    }
+    if (player >= this.gameService.players.length) {
+      return '';
+    }
+
+
+    if ((player !== this.gameService.currentPlayer) || (this.selectionApplied)) {
+
+      valueString = this.getFinalScoreString(row, player);
+    } else {
+
+      valueString = this.getOptionScoreString(row, player);
+    }
+    return valueString;
+
+
+  }
+
   applyOption() {
     console.log(`selectionApplied?${this.selectionApplied}`);
     if (!this.selectionApplied) {
@@ -114,7 +152,7 @@ export class ScoresComponent {
         this.gameService.commitRowChoice(this.chosenRow);
         this.selectionApplied = true;
         console.log(`change apply msg to done`);
-        this.ApplyMsg='Done';
+        this.ApplyMsg = 'Done';
         this.gameService.newTurn();
       }
     }
