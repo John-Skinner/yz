@@ -42,6 +42,10 @@ export class DiceComponent implements OnInit, AfterViewInit, OnChanges {
       this.drawFace(value);
     }
   };
+  setValueAndDraw(value:number) {
+    this.diceValue = value;
+    this.drawFace(this.diceValue);
+  }
   set AllowSelect(allow:boolean) {
     this.allowSelect = allow;
   }

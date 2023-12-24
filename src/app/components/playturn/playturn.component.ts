@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {GameService} from "../../services/game.service";
+import {GameService, GameState} from "../../services/game.service";
 
 @Component({
   selector: 'app-playturn',
@@ -9,15 +9,18 @@ import {GameService} from "../../services/game.service";
   styleUrl: './playturn.component.scss'
 })
 export class PlayturnComponent {
+
   constructor(private gameService:GameService) {
     this.gameService.onDiceWasSelected().subscribe(()=> {
-      console.log('saw onDiceWasSelected');
       this.allowNextThrow();
+    });
+    this.gameService.onNewTurn().subscribe((player)=> {
+      this.currentPlayer = this.gameService.players[player];
+      this.throwState = 0;
     })
   }
   allowNextThrow() {
     this.throwState = this.throwNextStateIfSelectionMade;
-    console.log(`new throw state:${this.throwState}`);
   }
   currentPlayer = this.gameService.players[this.gameService.currentPlayer];
   throwState = 0;
@@ -39,6 +42,7 @@ export class PlayturnComponent {
     this.throwDice.emit('2');
     this.throwState = -1;
     this.throwNextStateIfSelectionMade = 3;
+    this.gameService.changeGameState(GameState.scoreReady);
 
   }
 

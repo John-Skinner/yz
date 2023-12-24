@@ -39,6 +39,7 @@ export class SetupComponent {
   done() {
     this.disablePlayerEntry[this.currentEnterPlayer]=true;
     this.gameService.changeTabIndex(0);
+    this.gameService.startTurn();
     this.gameService.changeGameState(GameState.start);
 
   }

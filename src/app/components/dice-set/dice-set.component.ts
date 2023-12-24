@@ -25,16 +25,23 @@ export class DiceSetComponent implements AfterViewInit {
       if (gameState === GameState.start) {
         this.setSelectionAllowed(false);
       }
+    });
+    this.gameService.onNewTurn().subscribe((player)=> {
+      this.clearDice();
+      this.setSelectionAllowed(true);
+
     })
 
   }
   diceDiameter=350;
+  clearDice() {
+    this.dice.forEach((d)=> {
+      d.setValueAndDraw(0);
+    })
+  }
   rollAll() {
-    console.log(`rollAll(${this.dice.length}`);
     this.dice.forEach((d,i)=> {
-      console.log(`select state:${d.selectedState}`)
 
-        console.log(`rolling die:${i}`)
         d.selectedState = false;
         d.roll();
 
@@ -46,11 +53,8 @@ export class DiceSetComponent implements AfterViewInit {
 
   }
   rollSelected() {
-    console.log(`rollSelected(${this.dice.length}`);
     this.dice.forEach((d,i)=> {
-      console.log(`select state:${d.selectedState}`)
       if (d.selectedState) {
-        console.log(`rolling die:${i}`)
         d.selectedState = false;
         d.roll();
 
@@ -68,7 +72,6 @@ export class DiceSetComponent implements AfterViewInit {
   }
 
   throwDice(throwNumber:string) {
-    console.log(`throw number:${throwNumber}`);
     switch (throwNumber) {
       case '0':
       {

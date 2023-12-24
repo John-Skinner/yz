@@ -5,6 +5,7 @@
 input[type='text'] {
   font-size: 30px;
 }
+
 th {
   background-color: orange;
   font-size:30px
@@ -27,16 +28,12 @@ th {
   grid-row:1
 }
 button {
-  margin:3px;
+  border-width:0;
+  font-size: xxx-large;
 }
 .row {
   display:flex;
   margin-left:3px;
-  button {
-    border-radius: 10px;
-    font-size: large;
-    font-weight: bolder;
-    background-color: lightgray;
-  }
+
 }
 

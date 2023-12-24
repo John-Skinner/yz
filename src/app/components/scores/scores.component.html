@@ -1,25 +1,22 @@
 <table id="upper">
   <tr style="font-size:30px">
     <th>Goal</th>
-    <th style="max-width:40px">{{getPlayerName(0)}}</th>
-    <th style="max-width:40px">{{getPlayerName(1)}}</th>
-    <th style="max-width:40px">{{getPlayerName(2)}}</th>
-    <th style="max-width:40px">{{getPlayerName(3)}}</th>
-
-
+    <th style="max-width:40px">{{ getPlayerName(0) }}</th>
+    <th style="max-width:40px">{{ getPlayerName(1) }}</th>
+    <th style="max-width:40px">{{ getPlayerName(2) }}</th>
+    <th style="max-width:40px">{{ getPlayerName(3) }}</th>
   </tr>
   <tr>
     <td>
-      <button (click)="choseRow(0)">
-        <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
-        <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
-        <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
-      </button>
-
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
+      <app-dice [fixedValue]="1" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td></td>
-    <td><td>
-    <td></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(0)">{{entry(0,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -27,14 +24,14 @@
         <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
         <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
         <app-dice [fixedValue]="2" [diceDiameter]="diceDiameter"></app-dice>
-        <button (click)="choseRow(1)">USE</button>
       </div>
 
     </td>
-    <td><span id="twosValueP1"></span></td>
-    <td><span id="twosValueP2"></span></td>
-    <td><span id="twosValueP3"></span></td>
-    <td><span id="twosValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(1)">{{entry(1,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -42,10 +39,12 @@
       <app-dice [fixedValue]="3" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="3" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="threesValueP1"></span></td>
-    <td><span id="threesValueP2"></span></td>
-    <td><span id="threesValueP3"></span></td>
-    <td><span id="threesValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(2)">{{entry(2,player)}}</button>
+      </td>
+    </ng-template>
+
   </tr>
   <tr>
     <td>
@@ -53,10 +52,11 @@
       <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="foursValueP1"></span></td>
-    <td><span id="foursValueP2"></span></td>
-    <td><span id="foursValueP3"></span></td>
-    <td><span id="foursValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(3)">{{entry(3,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -64,10 +64,11 @@
       <app-dice [fixedValue]="5" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="5" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="fivesValueP1"></span></td>
-    <td><span id="fivesValueP2"></span></td>
-    <td><span id="fivesValueP3"></span></td>
-    <td><span id="fivesValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(4)">{{entry(4,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -75,10 +76,11 @@
       <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="sixesValueP1"></span></td>
-    <td><span id="sixesValueP2"></span></td>
-    <td><span id="sixesValueP3"></span></td>
-    <td><span id="sixesValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(5)">{{entry(5,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -121,6 +123,7 @@
       <app-dice [fixedValue]="current(2)" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="current(3)" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="current(4)" [diceDiameter]="diceDiameter"></app-dice>
+      <button (click)="applyOption()">{{ApplyMsg}}</button>
     </td>
   </tr>
 </table>
@@ -128,10 +131,10 @@
 <table id="lower">
   <tr>
     <th>Goal</th>
-    <th>{{getPlayerName(0)}}</th>
-    <th>{{getPlayerName(1)}}</th>
-    <th>{{getPlayerName(2)}}</th>
-    <th>{{getPlayerName(3)}}</th>
+    <th>{{ getPlayerName(0) }}</th>
+    <th>{{ getPlayerName(1) }}</th>
+    <th>{{ getPlayerName(2) }}</th>
+    <th>{{ getPlayerName(3) }}</th>
 
   </tr>
   <tr>
@@ -140,10 +143,11 @@
       <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="3kValueP1"></span></td>
-    <td><span id="3kValueP2"></span></td>
-    <td><span id="3kValueP3"></span></td>
-    <td><span id="3kValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(10)">{{entry(10,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -152,10 +156,11 @@
       <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="0" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="4kValueP1"></span></td>
-    <td><span id="4kValueP2"></span></td>
-    <td><span id="4kValueP3"></span></td>
-    <td><span id="4kValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(11)">{{entry(11,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -165,10 +170,11 @@
       <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="fhValueP1"></span></td>
-    <td><span id="fhValueP2"></span></td>
-    <td><span id="fhValueP3"></span></td>
-    <td><span id="fhValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(12)">{{entry(12,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -178,10 +184,11 @@
       <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
 
     </td>
-    <td><span id="ssValueP1"></span></td>
-    <td><span id="ssValueP2"></span></td>
-    <td><span id="ssValueP3"></span></td>
-    <td><span id="ssValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(13)">{{entry(13,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -191,10 +198,11 @@
       <app-dice [fixedValue]="4" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="5" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="lsValueP1"></span></td>
-    <td><span id="lsValueP2"></span></td>
-    <td><span id="lsValueP3"></span></td>
-    <td><span id="lsValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(14)">{{entry(14,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -204,10 +212,11 @@
       <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="6" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="yValueP1"></span></td>
-    <td><span id="yValueP2"></span></td>
-    <td><span id="yValueP3"></span></td>
-    <td><span id="yValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(15)">{{entry(15,player)}}</button>
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -217,10 +226,12 @@
       <app-dice [fixedValue]="current(3)" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="current(4)" [diceDiameter]="diceDiameter"></app-dice>
     </td>
-    <td><span id="ccValueP1"></span></td>
-    <td><span id="ccValueP2"></span></td>
-    <td><span id="ccValueP3"></span></td>
-    <td><span id="ccValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        <button (click)="choseRow(16)">{{entry(16,player)}}</button>
+      </td>
+    </ng-template>
+
   </tr>
   <tr>
     <td>
