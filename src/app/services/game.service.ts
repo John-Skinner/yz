@@ -335,7 +335,7 @@ export class GameService
       }
     });
     console.log(`numberUnique:${numberUnique}`);
-    if (numberUnique === 2)
+    if ((numberUnique === 2) && (numberOfSame === 3))
     {
       this.scoreOptions[this.fullHouse] = 25;
     }
