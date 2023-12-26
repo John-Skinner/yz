@@ -86,10 +86,11 @@
     <td>
       <h3>TOTAL SCORE</h3>
     </td>
-    <td><span id="sumValueP1"></span></td>
-    <td><span id="sumValueP2"></span></td>
-    <td><span id="sumValueP3"></span></td>
-    <td><span id="sumValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        {{entry(6, player)}}
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -97,10 +98,11 @@
         BONUS
       </h3>
     </td>
-    <td><span id="bonusValueP1"></span></td>
-    <td><span id="bonusValueP2"></span></td>
-    <td><span id="bonusValueP3"></span></td>
-    <td><span id="bonusValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        {{entry(7, player)}}
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -108,10 +110,11 @@
         TOTAL UPPER
       </h3>
     </td>
-    <td><span id="tuValueP1"></span></td>
-    <td><span id="tuValueP2"></span></td>
-    <td><span id="tuValueP3"></span></td>
-    <td><span id="tuValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        {{entry(8,player)}}
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
@@ -237,27 +240,31 @@
     <td>
       <h3> YAHTZEE BONUS</h3>
     </td>
-    <td><span id="ybonusValueP1"></span></td>
-    <td><span id="ybonusValueP2"></span></td>
-    <td><span id="ybonusValueP3"></span></td>
-    <td><span id="ybonusValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        {{entry(17,player)}}
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
       <h3> TOTAL LOWER</h3>
     </td>
-    <td><span id="tlValueP1"></span></td>
-    <td><span id="tlValueP2"></span></td>
-    <td><span id="tlValueP3"></span></td>
-    <td><span id="tlValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        {{entry(18,player)}}
+      </td>
+    </ng-template>
   </tr>
   <tr>
     <td>
       <h3> GRAND TOTAL</h3>
     </td>
-    <td><span id="gtValueP1"></span></td>
-    <td><span id="gtValueP2"></span></td>
-    <td><span id="gtValueP3"></span></td>
-    <td><span id="gtValueP4"></span></td>
+    <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
+      <td>
+        {{entry(19,player)}}
+      </td>
+    </ng-template>
+
   </tr>
 </table>

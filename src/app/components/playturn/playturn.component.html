@@ -1,5 +1,4 @@
 <h2> Turn:{{currentPlayer}}</h2>
-<button (click)="throw()" [disabled]="throwState!==0" > Throw </button>
-<button (click)="throw2()" [disabled]="throwState!==1" > Second Throw</button>
-<button (click)="throw3()" [disabled]="throwState!==2" >  Third Throw</button>
+<button (click)="throw()" [disabled]="numThrows < 0" > Throw </button>
+<button (click)="score()">Score</button>
 

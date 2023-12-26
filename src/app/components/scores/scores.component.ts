@@ -58,6 +58,9 @@ export class ScoresComponent {
 
   getFinalScoreString(row: number, otherPlayer: number) {
     let value = this.gameService.getScoreValue(row, otherPlayer);
+    if (this.gameService.isDerivedRow[row]) {
+      return value.toString();
+    }
     if (value === -1) {
       return "0";
     }
@@ -152,9 +155,13 @@ export class ScoresComponent {
         this.gameService.commitRowChoice(this.chosenRow);
         this.selectionApplied = true;
         console.log(`change apply msg to done`);
-        this.ApplyMsg = 'Done';
+        this.ApplyMsg = 'Next Turn';
+        this.gameService.evaluateTotals();
         this.gameService.newTurn();
       }
+    }
+    else {
+      this.gameService.changeTabIndex(0);
     }
   }
 }

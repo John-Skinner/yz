@@ -71,15 +71,15 @@ export class DiceSetComponent implements AfterViewInit {
     })
   }
 
-  throwDice(throwNumber:string) {
+  throwDice(throwNumber:number) {
     switch (throwNumber) {
-      case '0':
+      case 0:
       {
         this.rollAll();
         this.setSelectionAllowed(true);
         break;
       }
-      case '1': {
+      case 1: {
         this.rollSelected();
         this.gameService.resetDiceSelected();
 
@@ -87,7 +87,7 @@ export class DiceSetComponent implements AfterViewInit {
 
         break;
       }
-      case '2':{
+      case 2:{
         this.rollSelected();
         this.gameService.resetDiceSelected();
         this.setSelectionAllowed(false);
