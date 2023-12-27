@@ -84,7 +84,7 @@
   </tr>
   <tr>
     <td>
-      <h3>TOTAL SCORE</h3>
+      TOTAL SCORE
     </td>
     <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
       <td>
@@ -94,9 +94,9 @@
   </tr>
   <tr>
     <td>
-      <h3>
+
         BONUS
-      </h3>
+
     </td>
     <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
       <td>
@@ -106,9 +106,9 @@
   </tr>
   <tr>
     <td>
-      <h3>
+
         TOTAL UPPER
-      </h3>
+
     </td>
     <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
       <td>
@@ -118,7 +118,7 @@
   </tr>
   <tr>
     <td>
-      <h3> Current Throw</h3>
+      Current Throw
     </td>
     <td colspan="4">
       <app-dice [fixedValue]="current(0)" [diceDiameter]="diceDiameter"></app-dice>
@@ -126,11 +126,11 @@
       <app-dice [fixedValue]="current(2)" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="current(3)" [diceDiameter]="diceDiameter"></app-dice>
       <app-dice [fixedValue]="current(4)" [diceDiameter]="diceDiameter"></app-dice>
-      <button (click)="applyOption()">{{ApplyMsg}}</button>
+
     </td>
   </tr>
 </table>
-
+<button class="control" (click)="applyOption()">{{ApplyMsg}}</button>
 <table id="lower">
   <tr>
     <th>Goal</th>
@@ -238,7 +238,7 @@
   </tr>
   <tr>
     <td>
-      <h3> YAHTZEE BONUS</h3>
+      YAHTZEE BONUS
     </td>
     <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
       <td>
@@ -248,7 +248,7 @@
   </tr>
   <tr>
     <td>
-      <h3> TOTAL LOWER</h3>
+      TOTAL LOWER
     </td>
     <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
       <td>
@@ -258,7 +258,7 @@
   </tr>
   <tr>
     <td>
-      <h3> GRAND TOTAL</h3>
+      GRAND TOTAL
     </td>
     <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
       <td>

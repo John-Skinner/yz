@@ -13,8 +13,11 @@ th {
  th, td {
     border: 1px solid purple;
     border-radius: 10px;
-
+   font-size:x-large;
   }
+ tr {
+   max-height: 60px;
+ }
  .firstCol {
     width:150px;
   }
@@ -32,7 +35,20 @@ button {
   font-size: x-large;
 }
 .editable {
-  background-color: purple;
+  background-color: orange;
+  border-width: 4px;
+  border-radius: 8px;
+}
+.chosenRow {
+  background-color: #ffddc8;
+  border-width:4px;
+  border-radius: 8px;
+}
+.control {
+  background-color:white;
+  border-width:4px;
+  border-radius: 8px;
+  max-width:5cm;
 }
 .row {
   display:flex;

@@ -274,6 +274,7 @@ export class GameService
         this.getScoreValue(this.fullHouse, i) +
         this.getScoreValue(this.smallStraight, i) +
         this.getScoreValue(this.largeStraight, i) +
+        this.getScoreValue(this.chance,i) +
         this.getScoreValue(this.yahtzeeRow, i);
       this.setScoreValue(this.totalLower, i, lowerTotal);
       let grandTotal = this.getScoreValue(this.totalUpper, i) +

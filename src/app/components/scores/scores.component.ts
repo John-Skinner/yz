@@ -105,6 +105,9 @@ export class ScoresComponent {
       return 'fixed';
     }
     let currentFinalValue = this.gameService.getScoreValue(row, player);
+    if ((player === this.gameService.currentPlayer) && (this.chosenRow === row)) {
+      return 'chosenRow';
+    }
 
     if ((currentFinalValue === -1) || (currentFinalValue > 0)) {
 
