@@ -305,25 +305,33 @@ export class GameService
     });
 
     // 3 of a kind
-    let valueOfSame = 0;
+    value = 0;
     let numberOfSame = 0;
-    matched.forEach((v, i) =>
+    matched.forEach((v) =>
     {
       if (v >= 3)
       {
-        valueOfSame = i+1;
         numberOfSame = v;
       }
     })
     if (numberOfSame >= 3)
     {
-      this.scoreOptions[this.threeOfaKind] = valueOfSame * 3;
+      this.currentDice.forEach((dv) =>
+      {
+        value += dv;
+      })
+      this.scoreOptions[this.threeOfaKind] = value;
     }
 
+  value = 0;
     // 4 of a kind
     if (numberOfSame >= 4)
     {
-      this.scoreOptions[this.fourOfaKind] = valueOfSame * 4;
+      this.currentDice.forEach((dv) =>
+      {
+        value += dv;
+      })
+      this.scoreOptions[this.fourOfaKind] = value;
     }
 
     // full house
