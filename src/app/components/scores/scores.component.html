@@ -148,7 +148,7 @@
     </td>
     <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
       <td>
-        <button [class]="editable(0,player)" (click)="choseRow(10)">{{entry(10,player)}}</button>
+        <button [class]="editable(10,player)" (click)="choseRow(10)">{{entry(10,player)}}</button>
       </td>
     </ng-template>
   </tr>
@@ -161,7 +161,7 @@
     </td>
     <ng-template ngFor let-player [ngForOf]='[0,1,2,3]'>
       <td>
-        <button [class]="editable(0,player)" (click)="choseRow(11)">{{entry(11,player)}}</button>
+        <button [class]="editable(11,player)" (click)="choseRow(11)">{{entry(11,player)}}</button>
       </td>
     </ng-template>
   </tr>

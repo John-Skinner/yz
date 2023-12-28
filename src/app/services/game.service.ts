@@ -317,13 +317,13 @@ export class GameService
     })
     if (numberOfSame >= 3)
     {
-      this.scoreOptions[this.threeOfaKind] = valueOfSame * numberOfSame;
+      this.scoreOptions[this.threeOfaKind] = valueOfSame * 3;
     }
 
     // 4 of a kind
     if (numberOfSame >= 4)
     {
-      this.scoreOptions[this.fourOfaKind] = valueOfSame * numberOfSame;
+      this.scoreOptions[this.fourOfaKind] = valueOfSame * 4;
     }
 
     // full house
