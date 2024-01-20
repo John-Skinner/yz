@@ -1,7 +1,9 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {DiceComponent} from "../dice/dice.component";
 import {GameService, GameState} from "../../services/game.service";
 import {PlayturnComponent} from "../playturn/playturn.component";
+import {LayoutService} from "../../services/layout.service";
+
 
 @Component({
   selector: 'app-dice-set',
@@ -13,14 +15,14 @@ import {PlayturnComponent} from "../playturn/playturn.component";
   templateUrl: './dice-set.component.html',
   styleUrl: './dice-set.component.scss'
 })
-export class DiceSetComponent implements AfterViewInit {
+export class DiceSetComponent implements AfterViewInit,OnInit {
   dice:DiceComponent[] = [];
   @ViewChild('dice1') dice1:DiceComponent | null = null;
   @ViewChild('dice2') dice2:DiceComponent | null = null;
   @ViewChild('dice3') dice3:DiceComponent | null = null;
   @ViewChild('dice4') dice4:DiceComponent | null = null;
   @ViewChild('dice5') dice5:DiceComponent | null = null;
-  constructor(private gameService:GameService) {
+  constructor(private gameService:GameService,private layoutService:LayoutService) {
     this.gameService.onGameStateChanged().subscribe((gameState)=> {
       if (gameState === GameState.start) {
         this.setSelectionAllowed(false);
@@ -106,6 +108,14 @@ userThrew(on:boolean) {
       return;
     }
     this.dice = [this.dice1,this.dice2,this.dice3,this.dice4,this.dice5];
+
+  }
+
+  ngOnInit(): void {
+    let dims = this.layoutService.getScreenDims();
+    let minDim = Math.min(dims[0],dims[1]);
+    console.log(`service screen dims:${dims}`);
+    this.diceDiameter = Math.floor(minDim/4.0);
   }
 
 }

@@ -27,6 +27,7 @@ export enum GameState
 
 export class GameService
 {
+  isMobileProp = false;
   players: string[] = [];
   scoreArray = new Int32Array(0);
   tableSize = 20;
@@ -71,6 +72,12 @@ export class GameService
     this.isDerivedRow[this.totalLower] = true;
     this.isDerivedRow[this.grandTotal] = true;
 
+  }
+  setMoble(isMobile:boolean) {
+    this.isMobileProp = isMobile;
+  }
+  isMobile() {
+    return this.isMobileProp;
   }
 
   onDiceWasSelected()

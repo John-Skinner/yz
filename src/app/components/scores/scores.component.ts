@@ -15,10 +15,11 @@ import {NgForOf} from "@angular/common";
   styleUrl: './scores.component.scss'
 })
 export class ScoresComponent {
-  diceDiameter = 50;
+  diceDiameter = 15;
   selectionApplied = false;
   chosenRow = -1;
   ApplyMsg = 'Apply';
+
 
   constructor(private gameService: GameService) {
     this.gameService.onNewTurn().subscribe((player) => {
